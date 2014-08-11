@@ -1,6 +1,15 @@
 Coding Exercise
 ===============
 
+Hey there!
+
+Thanks for taking a look at this coding exercise.  UserTesting uses this exercise as part of it's interviewing process for coding related positions.
+
+# Exercise instructions
+* Fork this repo
+* Complete the exercise using any language you like
+* Submit your results via pull request
+
 # Setup
 
 You are free to implement any mechanism for feeding input into your
