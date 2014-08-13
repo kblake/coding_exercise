@@ -24,6 +24,8 @@ loop do
 
     menu.choice "See reservations" do
       puts
+      say "Ticket Reservations"
+      say "-------------------"
       puts reservations
       puts
     end
@@ -45,6 +47,7 @@ loop do
       ticket = Lockerz::Ticket.new(choice)
       reservations.create(ticket)
       puts
+      say "A locker has been reserved for you."
       say "Guest ticket information:"
       puts ticket 
       puts
