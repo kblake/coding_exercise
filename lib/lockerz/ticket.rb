@@ -20,5 +20,9 @@ module Lockerz
     def assign_available_locker_from(lockers)
       @locker_number, @bag_size = lockers.assign_from(@bag_size)
     end
+
+    def to_s
+      "Confirmation #: #{@confirmation_number}, In the #{@bag_size.capitalize} locker room at locker #{@locker_number}"
+    end
   end
 end

@@ -1,4 +1,4 @@
-require 'lockerz/error'
+require_relative 'error'
 
 module Lockerz
   class Lockers
