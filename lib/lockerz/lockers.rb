@@ -39,5 +39,9 @@ module Lockerz
       send(locker_size)[next_available_locker] = true
       [ next_available_locker, locker_size ]
     end
+
+    def unassign(ticket)
+      send(ticket.bag_size)[ticket.locker_number] = false
+    end
   end
 end

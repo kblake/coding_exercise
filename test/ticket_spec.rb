@@ -20,18 +20,9 @@ describe Lockerz::Ticket do
     end
 
     it 'assign a locker number' do
-      ticket.assign_locker(lockers)
+      ticket.assign_available_locker_from(lockers)
       ticket.locker_number.wont_be_nil
       ticket.bag_size.wont_be_nil
     end
-  end
-
-  describe 'lookup' do
-  end
-
-  describe 'add' do
-  end
-
-  describe 'remove' do
   end
 end

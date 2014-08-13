@@ -31,6 +31,14 @@ describe Lockerz::Lockers do
       lockers.assign_from(:small).must_equal [ 1, :small ]
     end
 
+    it 'unassign a ticket from locker' do
+      ticket = Lockerz::Ticket.new('small')
+      ticket.assign_available_locker_from(lockers)
+      lockers.small[0].must_equal true
+      lockers.unassign(ticket)
+      lockers.small[0].must_equal false
+    end
+
     it 'small locker request is full and medium is available' do
       lockers.assign_locker('small', Array.new(1000, true))
       lockers.assign_from(:small).must_equal [ 0, :medium ]
