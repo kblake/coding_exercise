@@ -4,19 +4,21 @@ module Lockerz
   class Ticket
     attr_reader :confirmation_number
     attr_reader :locker_number
-    attr_reader :bag_capacity
+    attr_reader :bag_size
 
-    def initialize(bag_capacity)
-      unless Lockerz::Lockers::TYPES.include? bag_capacity
+    def initialize(bag_size)
+      unless Lockerz::Lockers::TYPES.include? bag_size
         raise Lockerz::Error::InvalidLockerType
       end
 
       @confirmation_number = SecureRandom.hex
-      @bag_capacity = bag_capacity
+      @bag_size = bag_size
     end
 
+    # locker number
+    # bag size returned because it may have changed
     def assign_locker(lockers)
-      @locker_number = lockers.assign_from(@bag_capacity)
+      @locker_number, @bag_size = lockers.assign_from(@bag_size)
     end
 
   end

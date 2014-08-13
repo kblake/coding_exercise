@@ -27,13 +27,30 @@ describe Lockerz::Lockers do
 
   describe 'manage lockers' do
     it 'assign locker' do
-      lockers.assign_from(:small).must_equal 0
-      lockers.assign_from(:small).must_equal 1
+      lockers.assign_from(:small).must_equal [ 0, :small ]
+      lockers.assign_from(:small).must_equal [ 1, :small ]
     end
 
-    it 'locker is full' do
+    it 'small locker request is full and medium is available' do
       lockers.assign_locker('small', Array.new(1000, true))
+      lockers.assign_from(:small).must_equal [ 0, :medium ]
+    end
 
+    it 'small locker request is full, medium is full, large is available' do
+      lockers.assign_locker('small', Array.new(1000, true))
+      lockers.assign_locker('medium', Array.new(1000, true))
+      lockers.assign_from(:small).must_equal [ 0, :large ]
+    end
+
+    it 'medium locker request is full, large is available' do
+      lockers.assign_locker('medium', Array.new(1000, true))
+      lockers.assign_from(:medium).must_equal [ 0, :large ]
+    end
+
+    it 'all lockers are full' do
+      lockers.assign_locker('small', Array.new(1000, true))
+      lockers.assign_locker('medium', Array.new(1000, true))
+      lockers.assign_locker('large', Array.new(1000, true))
       proc { lockers.assign_from(:small) }.must_raise Lockerz::Error::NoLockersAvailable
     end
   end

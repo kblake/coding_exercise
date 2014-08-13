@@ -12,7 +12,7 @@ describe Lockerz::Ticket do
     end
 
     it 'use proper locker type' do
-      ticket.bag_capacity.must_equal 'small' 
+      ticket.bag_size.must_equal 'small' 
     end
 
     it 'raise bag capacity locker type error' do
@@ -22,6 +22,7 @@ describe Lockerz::Ticket do
     it 'assign a locker number' do
       ticket.assign_locker(lockers)
       ticket.locker_number.wont_be_nil
+      ticket.bag_size.wont_be_nil
     end
   end
 
