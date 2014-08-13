@@ -16,22 +16,22 @@ module Lockerz
     def assign_from(locker_size)
       next_available_locker = send(locker_size).index(false)
 
-      unless next_available_locker
-        if locker_size == 'small'.to_sym
+      if next_available_locker.nil?
+        if locker_size == :small
           locker_size = :medium
           next_available_locker = send(locker_size).index(false)
         end
       end
 
-      unless next_available_locker
-        if locker_size == 'medium'.to_sym
+      if next_available_locker.nil?
+        if locker_size == :medium
           locker_size = :large
           next_available_locker = send(locker_size).index(false)
         end
       end
 
-      unless next_available_locker
-        if locker_size == 'large'.to_sym
+      if next_available_locker.nil?
+        if locker_size == :large
           raise Lockerz::Error::NoLockersAvailable
         end
       end
