@@ -31,7 +31,7 @@ describe Lockerz::Lockers do
       lockers.assign_from(:small).must_equal 1
     end
 
-    it 'lockers are all full' do
+    it 'locker is full' do
       lockers.assign_locker('small', Array.new(1000, true))
 
       proc { lockers.assign_from(:small) }.must_raise Lockerz::Error::NoLockersAvailable

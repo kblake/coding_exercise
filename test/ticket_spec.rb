@@ -3,11 +3,20 @@ require 'lockerz/ticket'
 
 describe Lockerz::Ticket do
   let( :lockers ) { Lockerz::Lockers.new }
+
   describe 'create' do
-    let ( :ticket ) { Lockerz::Ticket.new }
+    let ( :ticket ) { Lockerz::Ticket.new('small') }
 
     it 'generate confirmation number' do
       ticket.confirmation_number.wont_be_nil
+    end
+
+    it 'use proper locker type' do
+      ticket.bag_capacity.must_equal 'small' 
+    end
+
+    it 'raise bag capacity locker type error' do
+      proc { Lockerz::Ticket.new('foo') }.must_raise Lockerz::Error::InvalidLockerType
     end
 
     it 'assign a locker number' do
