@@ -29,14 +29,12 @@ module Lockerz
       @reservations[confirmation_number]
     end
 
+    def fill_locker_room_for(locker_type)
+      lockers.fill_locker_room_for(locker_type)
+    end
+
     def to_s
       if @reservations.length > 0
-        #output = ""
-        #@reservations.values.each do |ticket|
-          #output << ticket.to_s
-        #end
-        #output
-
         @reservations.values.join("\n")
       else
         "No reservations yet"
