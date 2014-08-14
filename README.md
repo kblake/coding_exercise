@@ -1,23 +1,19 @@
 # Lockerz
 
-Locker reservation system. Hotels can manage user lockers and reservations using a confirmation ticket system.
+Locker reservation system. Hotels can manage guest bags in lockers and reservations using a confirmation ticket system.
 
-## Installation
+## Setup
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'lockerz'
-```
-
-And then execute:
+Install dependencies:
 
     $ bundle
 
-Or install it yourself as:
+Make sure tests pass
 
-    $ gem install lockerz
+    $ rake
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the app which demonstrates how the gem works.
+
+    $ ./lockerz_app.rb
